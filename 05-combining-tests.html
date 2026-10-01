@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>05 Combine diagnostic tests · FMD Diagnostic Bench</title>
+<meta name="description" content="Combine diagnostic tests. Module 1, Diagnostic tools in veterinary epidemiology, with foot-and-mouth disease as the case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap" id="nav"><a href="index.html">Contents</a><a href="00-know-fmd.html" data-s="basics">00 Know FMD</a><a href="01-test-performance.html" data-s="lo1">01 Se·Sp·PV</a><a href="02-reference-standards.html" data-s="lo2">02 Reference</a><a href="03-testing-strategy.html" data-s="lo3">03 Strategy</a><a href="04-surveillance.html" data-s="lo4">04 Surveillance</a><a href="05-combining-tests.html" data-s="lo5" aria-current="page">05 Combine</a><span class="prog" id="prog">0 / 7</span></div></nav>
+<div class="wrap">
+<section class="lo" id="lo5">
+  <div class="lohead"><span class="lonum">05</span><h1>Combine diagnostic tests</h1><button class="donebtn" data-sec="lo5" aria-pressed="false" type="button">Mark done</button>
+    <p>Parallel (OR) testing raises sensitivity and lowers specificity. Serial (AND) testing raises specificity and lowers sensitivity.</p></div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Lecture</span><h3>Serial and parallel diagnostic testing</h3></div>
+    <p class="muted">One test is often not enough. Two tests can be combined in two ways. The way you combine them changes sensitivity, specificity and the type of error you make.</p>
+    <div class="grid2">
+      <div>
+        <p><span class="tag a">Serial testing · AND rule</span></p>
+        <p>Tests are done one after another. A later test is done only if the earlier test is positive.</p>
+        <ul>
+          <li><b>Decision rule:</b> a sample is positive only if all tests are positive. If any test in the sequence is negative, the condition is ruled out.</li>
+          <li><b>Statistical effect:</b> specificity and positive predictive value go up. Sensitivity goes down. It reduces false positives.</li>
+          <li><b>Best used for:</b> confirming a diagnosis (ruling in a disease), when you need to be sure a positive result is real.</li>
+          <li><b>Trade-off:</b> it takes more time. It uses fewer resources at the start, because not every animal needs every test.</li>
+        </ul>
+      </div>
+      <div>
+        <p><span class="tag v">Parallel testing · OR rule</span></p>
+        <p>Two or more tests are done at the same time, or around the same time.</p>
+        <ul>
+          <li><b>Decision rule:</b> a sample is positive if any single test is positive. All tests must be negative to call the sample negative.</li>
+          <li><b>Statistical effect:</b> sensitivity and negative predictive value go up. Specificity goes down. It reduces false negatives.</li>
+          <li><b>Best used for:</b> first screening, or emergencies where missing a true case has a high cost.</li>
+          <li><b>Trade-off:</b> results come quickly, so decisions can be made at once. But false positives are more likely.</li>
+        </ul>
+      </div>
+    </div>
+    <h3 style="margin-top:18px">How to calculate combined sensitivity and specificity</h3>
+    <p class="muted">For two tests, A and B, that make errors independently of each other:</p>
+    <div class="tw"><table class="labt"><thead><tr><th></th><th>Serial (AND)</th><th>Parallel (OR)</th></tr></thead><tbody>
+      <tr><td><b>Combined sensitivity</b></td><td>Se<sub>A</sub> × Se<sub>B</sub></td><td>1 − (1 − Se<sub>A</sub>) × (1 − Se<sub>B</sub>)</td></tr>
+      <tr><td><b>Combined specificity</b></td><td>1 − (1 − Sp<sub>A</sub>) × (1 − Sp<sub>B</sub>)</td><td>Sp<sub>A</sub> × Sp<sub>B</sub></td></tr>
+      <tr><td><b>Why</b></td><td>An infected animal must test positive on both tests. A healthy animal is wrongly called positive only if both tests give a false positive.</td><td>An infected animal is missed only if both tests are false negative. A healthy animal must test negative on both tests.</td></tr>
+      <tr><td><b>Example</b><br><span class="muted">A: Se 90%, Sp 95%<br>B: Se 80%, Sp 98%</span></td><td>Se = 0.90 × 0.80 = <b>72.0%</b><br>Sp = 1 − (0.05 × 0.02) = <b>99.9%</b></td><td>Se = 1 − (0.10 × 0.20) = <b>98.0%</b><br>Sp = 0.95 × 0.98 = <b>93.1%</b></td></tr>
+    </tbody></table></div>
+    <p class="note"><b>Check the pattern.</b> Serial testing lowers sensitivity (90% and 80% become 72%) and raises specificity (95% and 98% become 99.9%). Parallel testing does the opposite. These formulas assume the two tests make errors independently. If they share errors, for example because both react to the same antibody, the real values are less favourable.</p>
+    <p class="note">Task 5.1 shows how to calculate the combined sensitivity and specificity for each rule.</p>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Task 5.1</span><h3>Combine Test A and Test B</h3></div>
+    <div class="sliders">
+      <label class="sl" for="cSeA"><span class="sh"><span>Test A sensitivity</span><output id="cSeAO"></output></span><input type="range" id="cSeA" min="50" max="100" step="0.1" value="90"></label>
+      <label class="sl" for="cSpA"><span class="sh"><span>Test A specificity</span><output id="cSpAO"></output></span><input type="range" id="cSpA" min="50" max="100" step="0.1" value="95"></label>
+      <label class="sl" for="cSeB"><span class="sh"><span>Test B sensitivity</span><output id="cSeBO"></output></span><input type="range" id="cSeB" min="50" max="100" step="0.1" value="80"></label>
+      <label class="sl" for="cSpB"><span class="sh"><span>Test B specificity</span><output id="cSpBO"></output></span><input type="range" id="cSpB" min="50" max="100" step="0.1" value="98"></label>
+    </div>
+    <div class="chartbox" id="cChart"></div>
+    <div class="legend"><span><i style="background:var(--s1)"></i>Sensitivity</span><span><i style="background:var(--s2)"></i>Specificity</span></div>
+    <div class="tw"><table><thead><tr><th>Strategy</th><th>Sensitivity</th><th>Specificity</th><th>PPV (at 1% prevalence)</th><th>NPV (at 1% prevalence)</th></tr></thead><tbody id="cTab"></tbody></table></div>
+    <div class="callout"><b>Independence is an assumption.</b> The multiplication formulas hold only if the tests err independently. Two tests that read a similar biological response, or the same assay repeated on the same serum, share errors. The Terrestrial Manual makes the same point about retesting with a second NSP ELISA: account for conditional dependence.</div>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag a">Task 5.2</span><h3>Screen, then confirm: 10,000 animals through a serial algorithm</h3></div>
+    <p class="muted">The WOAH serosurveillance algorithm for FMD is serial. In a vaccinated population an NSP 3ABC ELISA screens, positives get an NSP confirmatory test, and follow-up decides infected or not. A negative at either step stops the pathway. Test A and B come from Task 5.1. Prevalence is 1%. Numbers are hypothetical.</p>
+    <div class="flow" id="casc"></div>
+  </div>
+  <div class="scen" id="q6"></div>
+  <div class="panel chap ex" id="ex51">
+    <div class="step"><span class="tag a">Exercise 5.1</span><h3>Case: Confirming FMD in suspected pigs</h3></div>
+    <p><b>Scenario.</b> You are a veterinary officer in East Java, Indonesia. You receive a report of pigs showing clinical signs suspected to be associated with foot-and-mouth disease (FMD). You visit the farm and collect appropriate samples from the suspected animals. You now need to confirm whether the animals are infected with FMD virus using diagnostic testing.</p>
+    <figure style="margin:0 0 14px;max-width:460px">
+      <a href="photos/fmd-pig-lesions.jpg" target="_blank" rel="noopener"><img src="photos/fmd-pig-lesions.jpg" width="811" height="653" loading="lazy" alt="Four photos of pigs with suspected FMD lesions. Top: foot lesions with raw, red erosions at the coronary band and between the claws. Bottom: lesions on the snout and a salivary discharge near the mouth." style="width:100%;height:auto;border-radius:8px;display:block"></a>
+    </figure>
+    <ol class="q">
+      <li>Which two diagnostic tests will you choose? Why do you choose these tests?</li>
+      <li>Will you conduct the tests in parallel or in serial? Why?</li>
+      <li>What are the sensitivity and specificity of the parallel or serial testing?</li>
+    </ol>
+    <p class="muted"><b>Presentation.</b> Answer these questions in your presentation. Show the tests you chose and why, the rule you used (parallel or serial) and why, and the combined sensitivity and specificity with your calculation.</p>
+  </div>
+</section>
+
+<div class="pager"><a href="04-surveillance.html"><small>← Previous</small><b>04 Plan surveillance and timing</b></a></div>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/s05.js"></script>
+<script>initProgress();</script>
+</body>
+</html>

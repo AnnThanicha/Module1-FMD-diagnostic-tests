@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>01 Diagnostic test performance · FMD Diagnostic Bench</title>
+<meta name="description" content="Diagnostic test performance: the 2×2 table, sensitivity, specificity, PPV and NPV. Module 1, Diagnostic tools in veterinary epidemiology, with foot-and-mouth disease as the case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap" id="nav"><a href="index.html">Contents</a><a href="00-know-fmd.html" data-s="basics">00 Know FMD</a><a href="01-test-performance.html" data-s="lo1" aria-current="page">01 Se·Sp·PV</a><a href="02-reference-standards.html" data-s="lo2">02 Reference</a><a href="03-testing-strategy.html" data-s="lo3">03 Strategy</a><a href="04-surveillance.html" data-s="lo4">04 Surveillance</a><a href="05-combining-tests.html" data-s="lo5">05 Combine</a><span class="prog" id="prog">0 / 7</span></div></nav>
+<div class="wrap">
+<section class="lo" id="lo1">
+  <div class="lohead"><span class="lonum">01</span><h1>Diagnostic test performance</h1><button class="donebtn" data-sec="lo1" aria-pressed="false" type="button">Mark done</button>
+    <p>Learn the 2×2 table. Use it to calculate sensitivity, specificity, positive predictive value (PPV) and negative predictive value (NPV). Then see how prevalence changes the predictive values.</p></div>
+  <p class="goal"><b>Done when you can</b> build a 2×2 table, calculate all four measures, say which row or column each one starts from, and explain how prevalence changes PPV and NPV.</p>
+
+  <div class="panel">
+    <div class="step"><span class="tag v">1.1 · Why a 2×2 table</span><h3>Why we need a 2×2 table</h3></div>
+    <p>No test is perfect. Some infected animals test negative. Some uninfected animals test positive. The 2×2 table counts these outcomes so we can measure how well a test works.</p>
+    <p>To build the table, you need two things for every animal:</p>
+    <ul class="kl">
+      <li><b>The true status</b> (infected or uninfected). This comes from a reference standard. <a href="02-reference-standards.html">Section 02</a> explains why the reference standard must be trustworthy.</li>
+      <li><b>The test result</b> (positive or negative) from the test you are evaluating.</li>
+    </ul>
+  </div>
+
+  <div class="panel">
+    <div class="step"><span class="tag a">1.2 · The 2×2 table</span><h3>Build the table from 1,000 cattle</h3></div>
+    <p>Example: 1,000 cattle are tested. 100 are infected and 900 are uninfected. Columns show the true status. Rows show the test result.</p>
+    <div id="tt1"></div>
+    <div class="grid2">
+      <div class="note"><b>Four cells.</b><br><b>True positive (TP):</b> infected, test positive.<br><b>False positive (FP):</b> uninfected, test positive.<br><b>False negative (FN):</b> infected, test negative.<br><b>True negative (TN):</b> uninfected, test negative.</div>
+      <div class="note"><b>Two kinds of error.</b><br><b>False negative:</b> an infected animal is missed. It may keep spreading infection.<br><b>False positive:</b> an uninfected animal may face isolation, extra tests or movement restrictions.<br>Which error costs more depends on why you are testing.</div>
+    </div>
+    <small class="muted">Hypothetical teaching numbers. They are not performance claims for any real test.</small>
+  </div>
+
+  <div class="panel">
+    <div class="step"><span class="tag ok">1.3 · Four measures</span><h3>Sensitivity, specificity, PPV and NPV</h3></div>
+    <p>Pick a measure. The matching cells light up in the table, and the calculation appears below.</p>
+    <div class="chips" id="mPick" role="group" aria-label="Choose a measure"><button class="chip" type="button" data-m="se" aria-pressed="true">Sensitivity</button><button class="chip" type="button" data-m="sp">Specificity</button><button class="chip" type="button" data-m="ppv">PPV</button><button class="chip" type="button" data-m="npv">NPV</button></div>
+    <div class="grid2"><div id="tt2"></div><div style="display:grid;gap:10px;align-content:start"><div class="kpis" style="grid-template-columns:1fr" id="mK"></div><p class="note" id="mTxt"></p></div></div>
+    <div class="grid2">
+      <div class="note"><b>Sensitivity and specificity</b> start from the <b>true status</b>. Read down the <b>columns</b>.</div>
+      <div class="note"><b>PPV and NPV</b> start from the <b>test result</b>. Read across the <b>rows</b>.</div>
+    </div>
+  </div>
+
+  <div class="grid2">
+    <div class="panel"><span class="tag ok">Sensitivity (Se)</span><h3>Does the test find infected animals?</h3>
+      <p><b>Question:</b> Of all infected animals, how many test positive?</p>
+      <p class="mono">Se = TP ÷ (TP + FN)</p>
+      <p class="mono">= 90 ÷ (90 + 10) = 90%</p>
+      <p class="muted">The test detects 90 of 100 infected cattle and misses 10. A highly sensitive test has few false negatives. A negative result from it is useful for ruling infection out.</p></div>
+    <div class="panel"><span class="tag ok">Specificity (Sp)</span><h3>Does the test clear uninfected animals?</h3>
+      <p><b>Question:</b> Of all uninfected animals, how many test negative?</p>
+      <p class="mono">Sp = TN ÷ (TN + FP)</p>
+      <p class="mono">= 855 ÷ (855 + 45) = 95%</p>
+      <p class="muted">The test clears 855 of 900 uninfected cattle and wrongly flags 45. A highly specific test has few false positives. A positive result from it is useful for ruling infection in.</p></div>
+    <div class="panel"><span class="tag a">Positive predictive value (PPV)</span><h3>If the test is positive, is the animal infected?</h3>
+      <p><b>Question:</b> Of all test-positive animals, how many are infected?</p>
+      <p class="mono">PPV = TP ÷ (TP + FP)</p>
+      <p class="mono">= 90 ÷ (90 + 45) = 66.7%</p>
+      <p class="muted">About two in three positive cattle are infected. The other one in three are false positives.</p></div>
+    <div class="panel"><span class="tag a">Negative predictive value (NPV)</span><h3>If the test is negative, is the animal free of infection?</h3>
+      <p><b>Question:</b> Of all test-negative animals, how many are uninfected?</p>
+      <p class="mono">NPV = TN ÷ (TN + FN)</p>
+      <p class="mono">= 855 ÷ (855 + 10) = 98.8%</p>
+      <p class="muted">About 99 in 100 negative cattle are uninfected. About 1 in 100 negative cattle is infected but missed.</p></div>
+  </div>
+
+  <div class="panel">
+    <div class="step"><span class="tag a">1.4 · Summary</span><h3>All four measures at a glance</h3></div>
+    <div class="tw"><table style="text-align:left"><thead><tr><th style="text-align:left">Measure</th><th style="text-align:left">Question</th><th style="text-align:left">Starts from</th><th style="text-align:left">Formula</th><th style="text-align:left">Example</th></tr></thead><tbody>
+      <tr><td><b>Sensitivity</b></td><td style="text-align:left">Among infected animals, how many test positive?</td><td style="text-align:left">Infected column</td><td class="mono" style="text-align:left">TP ÷ (TP+FN)</td><td class="num" style="text-align:left">90%</td></tr>
+      <tr><td><b>Specificity</b></td><td style="text-align:left">Among uninfected animals, how many test negative?</td><td style="text-align:left">Uninfected column</td><td class="mono" style="text-align:left">TN ÷ (TN+FP)</td><td class="num" style="text-align:left">95%</td></tr>
+      <tr><td><b>PPV</b></td><td style="text-align:left">Among test-positive animals, how many are infected?</td><td style="text-align:left">Positive row</td><td class="mono" style="text-align:left">TP ÷ (TP+FP)</td><td class="num" style="text-align:left">66.7%</td></tr>
+      <tr><td><b>NPV</b></td><td style="text-align:left">Among test-negative animals, how many are uninfected?</td><td style="text-align:left">Negative row</td><td class="mono" style="text-align:left">TN ÷ (TN+FN)</td><td class="num" style="text-align:left">98.8%</td></tr>
+    </tbody></table></div>
+  </div>
+
+  <div class="callout"><b>A common misunderstanding.</b> "90% sensitivity" does <b>not</b> mean a positive animal has a 90% chance of being infected. That question is about PPV. In the example, the sensitivity is 90% but the PPV is only 66.7%.</div>
+
+  <div class="note"><b>Predictive values depend on prevalence.</b> Sensitivity and specificity are properties of the test. PPV and NPV also depend on how common infection is in the animals tested. Part 1.6 shows how much they change.</div>
+  <div class="panel">
+    <div class="step"><span class="tag v">1.5 · Practice</span><h3>Calculate the four measures</h3></div>
+    <p>A new test is used on 400 cattle. The 2×2 table is below. Calculate each measure as a percent with one decimal. Then check your answers.</p>
+    <div id="ttP"></div>
+    <div class="check" id="chk15">
+      <label>Sensitivity (%)<input type="number" step="0.1" inputmode="decimal" data-ans="80" data-tol="0.15" aria-label="Sensitivity percent"><span class="fb"></span></label>
+      <label>Specificity (%)<input type="number" step="0.1" inputmode="decimal" data-ans="90" data-tol="0.15" aria-label="Specificity percent"><span class="fb"></span></label>
+      <label>PPV (%)<input type="number" step="0.1" inputmode="decimal" data-ans="72.7" data-tol="0.15" aria-label="PPV percent"><span class="fb"></span></label>
+      <label>NPV (%)<input type="number" step="0.1" inputmode="decimal" data-ans="93.1" data-tol="0.15" aria-label="NPV percent"><span class="fb"></span></label>
+    </div>
+    <div class="controls"><button class="btn" type="button" data-check="chk15">Check answers</button><span class="muted" id="r15"></span></div>
+    <details class="task"><summary>Show the working</summary><div class="body">
+      <p class="mono">Se = 80 ÷ (80 + 20) = 80 ÷ 100 = 80.0%</p>
+      <p class="mono">Sp = 270 ÷ (270 + 30) = 270 ÷ 300 = 90.0%</p>
+      <p class="mono">PPV = 80 ÷ (80 + 30) = 80 ÷ 110 = 72.7%</p>
+      <p class="mono">NPV = 270 ÷ (270 + 20) = 270 ÷ 290 = 93.1%</p>
+      <p class="muted">Se and Sp use the columns (100 infected, 300 uninfected). PPV and NPV use the rows (110 test-positive, 290 test-negative).</p>
+    </div></details>
+  </div>
+
+
+  <div class="panel">
+    <div class="step"><span class="tag v">1.6 · Prevalence</span><h3>How prevalence changes PPV and NPV</h3></div>
+    <p>Sensitivity and specificity are properties of the test. PPV and NPV also depend on how common infection is in the animals tested. With Se and Sp fixed, higher prevalence gives higher PPV and lower NPV. Lower prevalence gives lower PPV and higher NPV.</p>
+  </div>
+  <div class="grid2">
+    <div class="panel"><span class="tag v">Higher prevalence</span><h3>PPV rises, NPV falls</h3><p class="muted">Where infection is likely, a negative result is less reassuring. Avoiding false negatives matters most.</p></div>
+    <div class="panel"><span class="tag a">Lower prevalence</span><h3>PPV falls, NPV rises</h3><p class="muted">Where infection is rare, most positives are false positives. Avoiding false positives matters most.</p></div>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag v">1.6 · Explore</span><h3>Predictive values across prevalence</h3></div>
+    <div class="sliders">
+      <label class="sl" for="pSe"><span class="sh"><span>Sensitivity</span><output id="pSeO"></output></span><input type="range" id="pSe" min="50" max="100" step="0.1" value="90"></label>
+      <label class="sl" for="pSp"><span class="sh"><span>Specificity</span><output id="pSpO"></output></span><input type="range" id="pSp" min="50" max="100" step="0.1" value="95"></label>
+      <label class="sl" for="pPv"><span class="sh"><span>Prevalence</span><output id="pPvO"></output></span><input type="range" id="pPv" min="0.1" max="99" step="0.1" value="10"></label>
+      <label class="f" for="pLog"><span>Prevalence axis</span><select id="pLog"><option value="lin">Linear, 0–100%</option><option value="log">Log, 0.1–100%</option></select></label>
+    </div>
+    <div class="chartbox" id="pChart"></div>
+    <div class="legend"><span><i style="background:var(--s1)"></i>PPV</span><span><i style="background:var(--s2)"></i>NPV</span></div>
+    <div class="grid2"><div id="pTT"></div><div style="display:grid;gap:10px;align-content:start"><div class="kpis" id="pK"></div><p class="note" id="pTxt"></p></div></div>
+    <small class="muted">Scenario prevalences are hypothetical teaching values, not field estimates. Use prevalence or an individual pre-test probability in these formulas. Do not substitute an incidence rate.</small>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag a">1.6 · Formulas</span><h3>PPV and NPV from prevalence, sensitivity and specificity</h3></div>
+    <p>You can calculate PPV and NPV without a 2×2 table. Use sensitivity (Se), specificity (Sp) and prevalence (P). Enter each as a proportion, for example 0.10 for 10%.</p>
+    <div class="grid2">
+      <div class="note"><b>PPV</b><br><span class="mono">PPV = (Se × P) ÷ [(Se × P) + (1 − Sp) × (1 − P)]</span></div>
+      <div class="note"><b>NPV</b><br><span class="mono">NPV = (Sp × (1 − P)) ÷ [((1 − Se) × P) + (Sp × (1 − P))]</span></div>
+    </div>
+    <p><b>Worked example.</b> Se = 0.90, Sp = 0.95, P = 0.10.</p>
+    <p class="mono">PPV = (0.90 × 0.10) ÷ [(0.90 × 0.10) + (0.05 × 0.90)] = 0.090 ÷ 0.135 = 66.7%</p>
+    <p class="mono">NPV = (0.95 × 0.90) ÷ [(0.10 × 0.10) + (0.95 × 0.90)] = 0.855 ÷ 0.865 = 98.8%</p>
+    <div class="note"><b>Interpretation.</b><br>The PPV is 66.7%. Even though the test is 95% specific, a positive result means only a 66.7% chance that the animal is infected, because prevalence is low (10%). About one in three positive animals is a false positive.<br><br>The NPV is 98.8%. A negative result means a 98.8% chance that the animal is not infected. About 1 in 100 negative animals is infected but missed.</div>
+  </div>
+  <div class="scen" id="q3"></div>
+</section>
+
+<div class="pager"><a href="00-know-fmd.html"><small>← Previous</small><b>00 Disease background and introduction to diagnostic tests</b></a><a class="nx" href="02-reference-standards.html"><small>Next →</small><b>02 Evaluate reference standards</b></a></div>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/s01.js"></script>
+<script>initProgress();</script>
+</body>
+</html>

@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Answer check · Exercises · FMD Diagnostic Bench</title>
+<meta name="description" content="Answer check for the exercises in sections 00, 02, 04 and 05.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.tri2{position:relative;display:grid;grid-template-columns:1fr 1fr;grid-template-areas:"a a" "h e";gap:46px 14px}
+.tri2 .tlines{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.tri2 .tlines line{stroke:var(--line);stroke-width:2;vector-effect:non-scaling-stroke}
+.zone{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:10px 12px;min-height:96px;display:grid;gap:8px;align-content:start;min-width:0}
+.zone h4{font:600 13px var(--body);color:var(--accent)}
+.z-agent{grid-area:a;justify-self:center;width:min(100%,56%)}.z-host{grid-area:h}.z-env{grid-area:e}
+.zl{display:flex;flex-wrap:wrap;gap:6px}
+.zc{font:500 12px var(--body);color:var(--ink);background:var(--accent-soft);border:1px solid var(--accent);border-radius:999px;padding:4px 10px;cursor:pointer;text-align:left}
+.zc.own{background:var(--ab-soft);border-color:var(--ab);cursor:default}
+.zc.ok{background:var(--good-soft);border-color:var(--good)}.zc.bad{background:var(--crit-soft);border-color:var(--crit)}
+.zc:disabled{cursor:default;opacity:1}
+.fcards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.fc{border:1px solid var(--line);border-radius:10px;background:var(--surface);padding:10px 12px;display:grid;gap:8px;align-content:space-between;font-size:13.5px}
+.fc p{max-width:none}
+.fb{display:flex;gap:6px;flex-wrap:wrap}
+.fb .dc{flex:1}
+.controls.own{align-items:center;flex-wrap:wrap}
+.controls.own input,#exPlanWhy{font:14px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.controls.own input{flex:1;min-width:200px}
+.controls.own select{font:14px var(--body);color:var(--ink);background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:8px}
+#exPlanWhy{width:100%;resize:vertical}
+.pq{border:1px solid var(--line);border-radius:12px;padding:12px 14px;display:grid;gap:8px;margin:0 0 12px;min-width:0}
+.pq legend{font:600 15px var(--body);padding:0 6px}
+.po{display:grid;grid-template-columns:auto 1fr;gap:2px 10px;align-items:start;border:1px solid var(--line);border-radius:8px;padding:8px 10px;background:var(--sunk);font-size:14px;cursor:pointer}
+.po .pt{grid-column:2}.po .pw{grid-column:2;font-size:13px;color:var(--muted)}
+.po.ok{background:var(--good-soft);border-color:var(--good)}.po.bad{background:var(--crit-soft);border-color:var(--crit)}
+.pscore{font-size:13.5px}
+@media (max-width:760px){.z-agent{width:100%}.tri2{gap:20px 10px}.tri2 .tlines{display:none}}
+.callout ul{margin:6px 0 0;padding-left:20px;display:grid;gap:4px}
+</style>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap"><a href="00-know-fmd.html">← Back to 00 Disease background</a><a href="02-reference-standards.html">← Back to 02 Reference standards</a><a href="04-surveillance.html">← Back to 04 Surveillance</a><a href="05-combining-tests.html">← Back to 05 Combine</a></div></nav>
+<div class="wrap">
+<section class="lo" id="answercheck">
+  <div class="lohead"><span class="lonum">✓</span><h1>Module 1 Diagnostic tools in veterinary epidemiology<br>Answer check: exercises</h1>
+    <p>Check answers to Exercises 0.1 and 0.2 from section 00, Exercises 2.1 and 2.2 from section 02, Exercise 4.1 from section 04, and Exercise 5.1 from section 05. Try the open-ended questions first, then use this page to test the answer and read the reasons.</p></div>
+  <div class="callout" style="border-left-color:var(--accent);background:var(--accent-soft)"><b>The case.</b> You are a veterinary officer in East Java in late April 2022. FMD has just returned to Indonesia after decades. Farmers report cattle with fever, drooling, lameness and blisters. The case facts, epidemic curve and map are in <a href="00-know-fmd.html#case">section 00</a>.</div>
+  <div class="panel chap ex" id="ex1">
+    <div class="step"><span class="tag v">Exercise 0.1</span><h3>Draw the triad for the Indonesian outbreak</h3></div>
+    <p class="muted">Read each factor from the outbreak. Place it in the triad corner where it belongs: Host, Agent or Environment. Click a placed factor to move it back. Then add one factor of your own and press Check my triad.</p>
+    <div class="tri2" id="exTriBoard"></div>
+    <p class="muted" id="exTriCount" aria-live="polite"></p>
+    <div id="exTriCards" class="fcards"></div>
+    <div class="controls own"><label for="exTriOwn" class="muted">Your own factor</label><input type="text" id="exTriOwn" maxlength="80" placeholder="For example, shared vehicles between farms"><select id="exTriOwnK" aria-label="Corner for your factor"><option value="host">Host</option><option value="agent">Agent</option><option value="env">Environment</option></select><button class="ghost" type="button" id="exTriOwnAdd">Add</button></div>
+    <div class="controls"><button class="btn" type="button" id="exTriCheck" disabled>Check my triad</button><button class="ghost" type="button" id="exTriReset">Reset</button></div>
+    <div id="exTriOut" aria-live="polite"></div>
+  </div>
+
+  <div class="panel chap ex" id="ex2">
+    <div class="step"><span class="tag v">Exercise 0.2</span><h3>Plan the sampling and choose the tests</h3></div>
+    <p class="muted">A farm in your district reports 40 cattle and a few goats with fever, drooling, lameness and vesicles. Plan the sample taking and the tests so the outbreak response is on time. Tick everything you would do, write your reasons, then press Check my plan.</p>
+    <div id="exPlan"></div>
+    <label class="muted" for="exPlanWhy">Your reasons (optional, not graded)</label>
+    <textarea id="exPlanWhy" rows="3" placeholder="Why did you choose these tests? How do they keep the response on time?"></textarea>
+    <div class="controls"><button class="btn" type="button" id="exPlanBtn">Check my plan</button><button class="ghost" type="button" id="exPlanReset">Reset</button></div>
+    <div id="exPlanOut" aria-live="polite"></div>
+  </div>
+    <p class="note"><b>Sources.</b> Kedang VMK, Permatasari I, Chanchaidechachai T, Inchaisri C (2025), Spatial-temporal distribution and risk factors of foot and mouth disease outbreaks in Java Island, Indonesia from 2022 to 2023, BMC Veterinary Research 21:180: <a href="https://pubmed.ncbi.nlm.nih.gov/40102856/" target="_blank" rel="noopener">PubMed</a> and <a href="https://link.springer.com/article/10.1186/s12917-025-04621-2" target="_blank" rel="noopener">Springer</a>. Susila EB et al. (2023), <a href="https://www.tandfonline.com/doi/full/10.1080/09712119.2023.2229414#abstract" target="_blank" rel="noopener">Detection and identification of foot-and-mouth disease O/ME-SA/Ind-2001 virus lineage, Indonesia, 2022</a>, Journal of Applied Animal Research 51:487–494. Sample handling and test notes also draw on the WOAH Terrestrial Manual chapter 2.1.5 and Jamal and Belsham (2013), cited above.</p>
+
+  <div class="callout" style="border-left-color:var(--accent);background:var(--accent-soft)"><b>Section 02 exercises.</b> The data are Table 2 of Jauhari et al. (2024), in the Table 2 box in <a href="02-reference-standards.html">section 02</a>. The LFA is the index test and the indirect ELISA is the reference. As the authors did, group ELISA <b>ambiguous</b> results with <b>negative</b>.</div>
+
+  <div class="panel chap ex" id="ex21">
+    <div class="step"><span class="tag v">Exercise 2.1</span><h3>Sensitivity and specificity of the lateral flow assay</h3></div>
+    <p class="muted">Enter your answers as percent with one decimal, then press Check answers.</p>
+    <div class="check" id="chkE1">
+      <label>Sensitivity (%)<input type="number" step="0.1" inputmode="decimal" data-ans="95.2" data-tol="0.15" aria-label="Sensitivity percent"><span class="fb"></span></label>
+      <label>Specificity (%)<input type="number" step="0.1" inputmode="decimal" data-ans="100" data-tol="0.15" aria-label="Specificity percent"><span class="fb"></span></label>
+    </div>
+    <div class="controls"><button class="btn" type="button" data-check="chkE1">Check answers</button></div>
+    <details class="task"><summary>Show the working</summary><div class="body">
+      <p class="mono">2×2 table: TP = 20, FP = 0, FN = 1, TN = 11 (8 negative + 3 ambiguous)</p>
+      <p class="mono">Sensitivity = TP ÷ (TP + FN) = 20 ÷ 21 = 95.2%</p>
+      <p class="mono">Specificity = TN ÷ (TN + FP) = 11 ÷ 11 = 100%</p>
+      <p class="muted">The one false negative is serum SL9: ELISA positive (35.1%), LFA negative.</p>
+    </div></details>
+  </div>
+
+  <div class="panel chap ex" id="ex22">
+    <div class="step"><span class="tag v">Exercise 2.2</span><h3>Test agreement and kappa</h3></div>
+    <p class="muted">Use your 2×2 table from Exercise 2.1. Enter percent with one decimal and kappa with two decimals, choose an interpretation, then press Check answers.</p>
+    <div class="check" id="chkE2">
+      <label>Observed agreement (%)<input type="number" step="0.1" inputmode="decimal" data-ans="96.9" data-tol="0.15" aria-label="Observed agreement percent"><span class="fb"></span></label>
+      <label>Expected agreement by chance (%)<input type="number" step="0.1" inputmode="decimal" data-ans="53.9" data-tol="0.15" aria-label="Expected agreement percent"><span class="fb"></span></label>
+      <label>Kappa (2 decimals)<input type="number" step="0.01" inputmode="decimal" data-ans="0.93" data-tol="0.015" aria-label="Kappa"><span class="fb"></span></label>
+    </div>
+    <div class="controls">
+      <label class="f" for="kInt">Interpretation of kappa<select id="kInt"><option value="">Choose</option><option value="slight">Slight agreement (0.00–0.20)</option><option value="fair">Fair agreement (0.21–0.40)</option><option value="moderate">Moderate agreement (0.41–0.60)</option><option value="substantial">Substantial agreement (0.61–0.80)</option><option value="almost">Almost perfect agreement (0.81–1.00)</option></select></label>
+      <button class="btn" type="button" data-check="chkE2">Check answers</button><span class="muted" id="kFb"></span>
+    </div>
+    <details class="task"><summary>Show the working</summary><div class="body">
+      <p class="mono">Observed agreement = (20 + 11) ÷ 32 = 31 ÷ 32 = 96.9%</p>
+      <p class="mono">Expected = [(20 × 21) + (12 × 11)] ÷ 32² = (420 + 132) ÷ 1,024 = 53.9%</p>
+      <p class="mono">Kappa = (0.969 − 0.539) ÷ (1 − 0.539) = 0.93</p>
+      <p class="muted">A kappa of 0.93 is almost perfect agreement on the usual scale (Landis and Koch). The authors call it excellent. Kappa measures agreement between two tests. It does not say how many infected animals the strip finds, and with only 32 sera it is imprecise.</p>
+    </div></details>
+  </div>
+  <div class="callout" style="border-left-color:var(--accent);background:var(--accent-soft)"><b>Section 04 exercise.</b> This answer check uses the <b>NSP antibody ELISA (3ABC ELISA)</b> with a sensitivity of <b>97.75%</b>, reported by <a href="https://www.nature.com/articles/s41598-024-75793-4" target="_blank" rel="noopener">Seeyo et al. (2024), Sci Rep</a>. <b>You do not have to choose this test.</b> You can choose another test, find its sensitivity in the literature, and follow the same steps. If you did, your answers to questions 2 and 3 will differ from the ones below. Check your own working with the formula.</div>
+
+  <div class="panel chap ex" id="ex41">
+    <div class="step"><span class="tag a">Exercise 4.1</span><h3>Case: Has FMD spread to East Java?</h3></div>
+    <p class="muted">Design prevalence 1%, confidence 95%, random sampling from a large population. Answer the four questions, then press Check.</p>
+
+    <p><b>1. Which test would you choose?</b></p>
+    <div class="controls">
+      <label class="f" for="e41Test">Test<select id="e41Test"><option value="">Choose</option><option value="nsp">NSP antibody test (3ABC ELISA)</option><option value="rt">RT-PCR (detects viral RNA)</option><option value="sp">SP antibody test (VNT, SPCE or LPBE ELISA)</option></select></label>
+      <button class="btn" type="button" id="e41TestBtn">Check</button><span class="muted" id="e41TestFb" aria-live="polite"></span>
+    </div>
+    <details class="task"><summary>Show the reasoning</summary><div class="body">
+      <p>Some cattle may have been vaccinated, so the test must not react to vaccination. Antibodies to structural proteins (SP) are produced by vaccine and by infection, so an SP test cannot separate them.</p>
+      <p><b>NSP antibody tests</b> (3ABC ELISA) are the usual DIVA choice. They detect antibody to non-structural proteins, which appear after infection, not after a purified vaccine. They also find animals that were infected earlier, even when the virus has gone.</p>
+      <p><b>RT-PCR</b> is not a good choice here. It detects viral RNA, so it only finds an animal while it carries the virus. We are not testing an active case yet. We are looking for evidence of spread, and a negative RT-PCR on an animal that has cleared the virus would miss it.</p>
+    </div></details>
+
+    <p><b>2. What is the sensitivity of your test?</b></p>
+    <p><b>Answer: 97.75%</b></p>
+    <p class="note">Your answer can be different. The sensitivity depends on the test you chose and on the study you found. Use this answer as a guide.</p>
+    <details class="task" open><summary>Explanation</summary><div class="body">
+      <p><a href="https://www.nature.com/articles/s41598-024-75793-4" target="_blank" rel="noopener">Seeyo et al. (2024), Scientific Reports</a> compared six commercial NSP ELISA kits in Thailand, using 800 serum samples from cattle, buffaloes, pigs and goats. The sensitivity of the kits ranged from 97.75% to 99.50%, and the specificity from 97.25% to 100%. The VDPro kit had the lowest sensitivity, 97.75%.</p>
+      <p>This answer check uses 97.75%. The value comes from the paper above, and other kits and studies give different values.</p>
+      <p class="muted">If you chose a different test, your value comes from your own source. Give the value, the source and the animals tested in your presentation.</p>
+    </div></details>
+
+    <p><b>3. How many animals must be sampled?</b></p>
+    <p><b>Answer: 305 animals</b></p>
+    <p class="note">Your answer can be different. The number of animals depends on the sensitivity of your test: a more sensitive test needs fewer animals, and a less sensitive test needs more. Use this answer as a guide and follow the same steps with your own sensitivity.</p>
+    <details class="task" open><summary>Explanation</summary><div class="body">
+      <p class="mono">DP × Se = 0.01 × 0.9775 = 0.009775</p>
+      <p class="mono">n = ln(1 − 0.95) ÷ ln(1 − 0.009775) = −2.996 ÷ −0.009823 = 305.0, so n = 305</p>
+      <p class="mono">Check: 1 − (1 − 0.009775)<sup>305</sup> = 95.002%. With 304 animals it is 94.95%, just under 95%.</p>
+    </div></details>
+
+    <p><b>4. All sampled animals test negative. What can you say?</b></p>
+    <div class="controls">
+      <label class="f" for="e41Res">Statement<select id="e41Res"><option value="">Choose</option><option value="proof">East Java has no infected animals.</option><option value="conf">With 95% confidence, infection is not present at 1% or higher. A lower level cannot be excluded.</option><option value="95">95% of the animals in East Java are free of infection.</option><option value="se">The test is 95% sensitive.</option></select></label>
+      <button class="btn" type="button" id="e41ResBtn">Check</button><span class="muted" id="e41ResFb" aria-live="polite"></span>
+    </div>
+    <details class="task"><summary>Show the reasoning</summary><div class="body">
+      <p><b>You can say:</b> if at least 1% of the animals were infected, this survey would have found at least one positive with 95% probability. All negative means infection at or above 1% is unlikely.</p>
+      <p><b>You cannot say:</b> that there is no infection at all. A few infected animals could remain below 1%.</p>
+      <p><b>Limits to mention:</b> the sample must be random and cover the whole region. The 97.75% sensitivity comes from one study and is the lowest of the six kits it tested. Sensitivity can differ in other animal populations, so some infected animals could still be missed. Repeat the survey over time to build confidence.</p>
+    </div></details>
+  </div>
+  <div class="callout" style="border-left-color:var(--accent);background:var(--accent-soft)"><b>Section 05 exercise.</b> This answer check uses <b>real-time RT-PCR</b> (sensitivity 91.9%, specificity 100%; <a href="https://www.sciencedirect.com/science/article/abs/pii/S0166093403002209" target="_blank" rel="noopener">Moonen et al. (2003), J Virol Methods</a>) and an <b>NSP ELISA</b> (sensitivity 95.8%, specificity 97.45%; <a href="https://link.springer.com/article/10.1007/s00705-015-2339-9" target="_blank" rel="noopener">source, Archives of Virology (2015)</a>). <b>You do not have to choose these tests.</b> You can choose other tests, find their sensitivity and specificity in the literature, and follow the same steps. Your numbers in question 3 will then differ. Use this answer as a guide.</div>
+
+  <div class="panel chap ex" id="ex51">
+    <div class="step"><span class="tag a">Exercise 5.1</span><h3>Case: Confirming FMD in suspected pigs</h3></div>
+    <p class="note">You might choose different tests, with different sensitivity and specificity. Your answers can be different from the ones below. Use this answer as a guide.</p>
+
+    <p><b>1. Which two diagnostic tests will you choose? Why?</b></p>
+    <p><b>Answer:</b> Test A is a virus (antigen or RNA) detection test, such as real-time RT-PCR or an antigen-capture ELISA, on epithelium or vesicular fluid. Test B is an antibody test on serum, such as an NSP ELISA.</p>
+    <details class="task" open><summary>Explanation</summary><div class="body">
+      <p>A suspected case can be at different stages of infection. Early in the disease, an animal can shed a lot of virus but has not made antibodies yet. Later, the virus is clearing but antibodies are high. A virus test and an antibody test together cover both stages, so the infection window is not missed.</p>
+      <p>Take several sample types: vesicular fluid and epithelium for Test A, and blood for serum for Test B. If the animals may have been vaccinated, use an NSP antibody test, because it does not react to vaccination. An SP antibody test (SPCE or LPBE) is an option in unvaccinated animals.</p>
+    </div></details>
+
+    <p><b>2. Parallel or serial? Why?</b></p>
+    <p><b>Answer: parallel testing (OR rule).</b></p>
+    <details class="task" open><summary>Explanation</summary><div class="body">
+      <p>For a suspected case, the priority is high sensitivity and fast containment. A false negative could let FMD spread to other farms and regions.</p>
+      <ul>
+        <li><b>Maximises sensitivity.</b> If either test is positive, the animal is treated as positive.</li>
+        <li><b>Covers the diagnostic window.</b> The virus test and the antibody test are done at the same time, so an early or late infection is not missed.</li>
+        <li><b>Saves time.</b> Waiting for a serial sequence, where Test 2 follows Test 1 after days, delays quarantine and control measures.</li>
+      </ul>
+      <p><b>Decision rule:</b> if Test A is positive or Test B is positive (or both), the case is confirmed positive. Start disease control measures straight away and notify the veterinary authority and WOAH. The case is negative only if both tests are negative and the clinical signs are explained by another disease, for example swine vesicular disease or vesicular stomatitis.</p>
+    </div></details>
+
+    <p><b>3. What are the sensitivity and specificity of the combined tests?</b></p>
+    <p><b>Answer: sensitivity 99.7%, specificity 97.45%.</b></p>
+    <details class="task" open><summary>Explanation</summary><div class="body">
+      <p class="mono">Test A (RT-PCR): Se = 91.9%, Sp = 100%</p>
+      <p class="mono">Test B (NSP ELISA): Se = 95.8%, Sp = 97.45%</p>
+      <p class="mono">Parallel Se = 1 − (1 − Se<sub>A</sub>) × (1 − Se<sub>B</sub>) = 1 − (0.081 × 0.042) = 1 − 0.0034 = 99.7%</p>
+      <p class="mono">Parallel Sp = Sp<sub>A</sub> × Sp<sub>B</sub> = 1.00 × 0.9745 = 97.45%</p>
+      <p>Parallel testing raises sensitivity above either test alone (91.9% and 95.8%). Specificity stays at 97.45%, as the less specific test sets it. The RT-PCR specificity is 100%, so it adds no false positives.</p>
+      <p class="muted">For comparison, serial testing would give Se = 0.919 × 0.958 = 88.0%. That would miss more infected pigs. These formulas assume the two tests make errors independently. Your numbers can differ if you chose other tests. Give your sources in the presentation.</p>
+    </div></details>
+  </div>
+</section>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/s00-case.js"></script>
+<script>
+wireChecks();
+$('[data-check="chkE2"]').addEventListener('click',()=>{
+  const v=$('#kInt').value,fb=$('#kFb');
+  fb.textContent=!v?'Choose an interpretation.':v==='almost'?'✓ Almost perfect (0.81–1.00). The authors call it excellent.':'✗ not yet. Compare kappa with the ranges.';
+});
+
+$('#e41TestBtn').addEventListener('click',()=>{
+  const v=$('#e41Test').value,fb=$('#e41TestFb');
+  fb.textContent=!v?'Choose a test.':v==='nsp'?'✓ Good choice. NSP antibodies appear after infection, not after vaccination (DIVA), and remain after the virus has gone.':v==='rt'?'✗ not a good choice. RT-PCR only finds animals that carry the virus now. We are not testing an active case yet.':'✗ not yet. Vaccinated animals also have SP antibodies.';
+});
+$('#e41ResBtn').addEventListener('click',()=>{
+  const v=$('#e41Res').value,fb=$('#e41ResFb');
+  fb.textContent=!v?'Choose a statement.':v==='conf'?'✓ Correct. It is not proof of zero infection.':'✗ not yet. Think about what the design prevalence and confidence mean.';
+});
+</script>
+</body>
+</html>

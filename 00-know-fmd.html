@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>00 Disease background and introduction to diagnostic tests · FMD Diagnostic Bench</title>
+<meta name="description" content="Disease background and introduction to diagnostic tests. Module 1, Diagnostic tools in veterinary epidemiology, with foot-and-mouth disease as the case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+<style>
+.introgrid{display:grid;grid-template-columns:minmax(0,320px) minmax(0,1fr);gap:22px;align-items:start}
+.intro figure{margin:0}
+.intro figure img{width:100%;height:auto;display:block;border-radius:10px;border:1px solid var(--line)}
+.intro figcaption{font-size:12.5px;color:var(--muted);margin-top:8px}
+.facts{display:grid;gap:8px;margin:14px 0 0}
+.facts>div{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;border-top:1px solid var(--line);padding-top:8px;font-size:14.5px}
+.facts dt{font-weight:600;color:var(--accent)}
+.facts dd{margin:0}
+.dg{display:grid;gap:4px}
+.dc{font:500 11.5px var(--body);color:var(--ink);background:var(--sunk);border:1px solid var(--line);border-radius:6px;padding:5px 6px;cursor:pointer;text-align:center}
+.dc:disabled{cursor:default;opacity:.6}
+.dc[aria-pressed="true"]{background:var(--accent-soft);border-color:var(--accent);opacity:1}
+.dc.right{background:var(--good-soft);border-color:var(--good);opacity:1}
+.dc.wrong{background:var(--crit-soft);border-color:var(--crit);opacity:1}
+.an.ok{border-color:var(--good);background:var(--good-soft)}
+.an.bad{border-color:var(--crit);background:var(--crit-soft)}
+:root{--cx:#FFF9DB;--cxl:#E8D98F}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--cx:#2B2812;--cxl:#5A5224}}
+:root[data-theme="dark"]{--cx:#2B2812;--cxl:#5A5224}
+#case,#ex1,#ex2,#present{background:var(--cx);border-color:var(--cxl)}
+.figs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.figs figure{margin:0}
+.figs img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:10px;background:#fff}
+.figs figcaption,.figsrc{font-size:12.5px;color:var(--muted);margin-top:8px}
+.figsrc{margin:0}
+.q{margin:0;padding-left:22px;display:grid;gap:10px;font-size:15px}
+.q li::marker{color:var(--accent);font-weight:600}
+@media (max-width:760px){.figs{grid-template-columns:1fr}}
+.callout ul{margin:6px 0 0;padding-left:20px;display:grid;gap:4px}
+.facts.wide>div{grid-template-columns:120px minmax(0,1fr)}
+@media (max-width:760px){.introgrid{grid-template-columns:1fr}.facts>div,.facts.wide>div{grid-template-columns:96px minmax(0,1fr)}}
+</style>
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap" id="nav"><a href="index.html">Contents</a><a href="00-know-fmd.html" data-s="basics" aria-current="page">00 Know FMD</a><a href="01-test-performance.html" data-s="lo1">01 Se·Sp·PV</a><a href="02-reference-standards.html" data-s="lo2">02 Reference</a><a href="03-testing-strategy.html" data-s="lo3">03 Strategy</a><a href="04-surveillance.html" data-s="lo4">04 Surveillance</a><a href="05-combining-tests.html" data-s="lo5">05 Combine</a><span class="prog" id="prog">0 / 7</span></div></nav>
+<div class="wrap">
+<section class="lo" id="basics">
+  <div class="lohead"><span class="lonum">00</span><h1>Disease background and introduction to diagnostic tests</h1><button class="donebtn" data-sec="basics" aria-pressed="false" type="button">Mark done</button></div>
+
+  <div class="panel chap intro">
+    <div class="step"><span class="tag v">Intro</span><h3>What is foot-and-mouth disease?</h3></div>
+    <div class="introgrid">
+      <figure>
+        <a href="photos/Foot-and-Mouth-Disease-Cinical-Signs-FINAL-poster-1187x1536.jpg" target="_blank" rel="noopener"><img src="photos/Foot-and-Mouth-Disease-Cinical-Signs-FINAL-poster-1187x1536.jpg" width="1187" height="1536" loading="lazy" alt="Poster of FMD signs in cattle. Fever, depression and anorexia sit at the centre. Around them are photos of mouth and nose lesions (pain), blisters on the tongue, dental pad and teats, foot lesions (lameness) and a drooling calf."></a>
+        <figcaption><b>Signs of FMD in cattle:</b> fever, pain, blisters, lameness and drooling. Click to enlarge. Poster by the Beef Cattle Research Council and Animal Health Canada. Photos courtesy of the National Centre for Foreign Animal Disease (Canada), Animal Health Australia and Mark Stevens.</figcaption>
+      </figure>
+      <div>
+        <p>Foot-and-mouth disease (FMD) is a severe, highly contagious viral disease of livestock. It has a large economic impact. It disrupts livestock production and regional and international trade, so it is a transboundary animal disease. The cause is an Aphthovirus in the family Picornaviridae.</p>
+        <dl class="facts">
+          <div><dt>Hosts</dt><dd>Cattle, pigs, sheep, goats and other cloven-hoofed animals. FMD is not readily transmissible to humans and is not a public health risk.</dd></div>
+          <div><dt>Virus</dt><dd>Seven serotypes: A, O, C, SAT1, SAT2, SAT3 and Asia1. Serotype C has not been isolated since 2004.</dd></div>
+          <div><dt>Signs</dt><dd>Fever and blister-like sores on the tongue and lips, in the mouth, on the teats and between the hooves. Incubation is 2–14 days.</dd></div>
+          <div><dt>Spread</dt><dd>Infected animals, contaminated materials, clothing and equipment, meat products, and air currents. Virus may be in milk and semen up to 4 days before signs appear.</dd></div>
+          <div><dt>Impact</dt><dd>Morbidity can reach 100% in susceptible herds. Adult mortality is low (1–5%). In young calves, lambs and piglets it is 20% or higher.</dd></div>
+          <div><dt>Control</dt><dd>Early detection, warning and surveillance, plus vaccination with at least 80% coverage.</dd></div>
+        </dl>
+      </div>
+    </div>
+    <p class="note">Source: <a href="https://www.woah.org/en/disease/foot-and-mouth-disease/" target="_blank" rel="noopener">WOAH, Foot and mouth disease</a>.</p>
+  </div>
+
+  <div class="panel chap">
+    <div class="step"><span class="tag v">0.1 · The triad</span><h3>Host, agent and environment</h3></div>
+    <p class="muted">Disease occurs when a susceptible host, a virus and an environment that lets it move all meet. Click each corner.</p>
+    <div class="tri">
+      <svg id="triSvg" viewBox="0 0 300 270" role="group" aria-label="Epidemiological triad for FMD: host, agent, environment">
+        <line class="edge" x1="150" y1="52" x2="56" y2="208"/><line class="edge" x1="150" y1="52" x2="244" y2="208"/><line class="edge" x1="56" y1="208" x2="244" y2="208"/>
+        <text x="150" y="150" text-anchor="middle" class="ctr">FMD</text>
+        <g class="nd" data-k="agent" role="button" tabindex="0" aria-pressed="false" aria-label="Agent"><circle cx="150" cy="52" r="46"/><text x="150" y="57">Agent</text></g>
+        <g class="nd" data-k="host" role="button" tabindex="0" aria-pressed="true" aria-label="Host"><circle cx="56" cy="208" r="46"/><text x="56" y="213">Host</text></g>
+        <g class="nd" data-k="env" role="button" tabindex="0" aria-pressed="false" aria-label="Environment"><circle cx="244" cy="208" r="46"/><text x="244" y="213">Environment</text></g>
+      </svg>
+      <div class="tdet" id="triOut" aria-live="polite"></div>
+    </div>
+  </div>
+
+  <div class="panel chap">
+    <div class="step"><span class="tag a">0.2 · FMD diagnostic tools</span><h3>Why we need a diagnostic tool</h3></div>
+    <div class="flow txt">
+      <div class="box"><b>Suspect case</b><small>Fever, drooling, lameness and vesicles on the mouth, feet and teats</small></div><div class="arr">→</div>
+      <div class="box"><b>Signs are not enough</b><small>Look-alike diseases, mild or hidden infection and carriers</small></div><div class="arr">→</div>
+      <div class="box"><b>The lab settles it</b><small>Virus antigen or nucleic acid in a sample is enough for a positive diagnosis</small></div>
+    </div>
+    <p>Laboratory diagnosis of any suspected FMD case is a matter of urgency. The WOAH Terrestrial Manual gives these reasons.</p>
+    <dl class="facts wide">
+      <div><dt>Look-alikes</dt><dd>FMD cannot be told apart clinically from swine vesicular disease, vesicular stomatitis or vesicular exanthema.</dd></div>
+      <div><dt>Variable signs</dt><dd>Signs range from inapparent to severe. They depend on the virus strain, dose, age, breed, species and immunity. Some species, such as African buffalo, may be infected without signs.</dd></div>
+      <div><dt>Hidden cases</dt><dd>Young animals may die suddenly from myocarditis, and vesicles are not always present. Adults on the same premises may show lesions.</dd></div>
+      <div><dt>Carriers</dt><dd>Some ruminants carry virus in the throat for more than 28 days after infection. In cattle this usually lasts under 6 months, but in a few it lasts up to 3 years. Pigs do not become carriers.</dd></div>
+      <div><dt>Many serotypes</dt><dd>Infection with one serotype does not protect against another, so the serotype must be known to choose a matching vaccine.</dd></div>
+      <div><dt>Biosafety</dt><dd>The virus is highly contagious. Samples go only to authorised laboratories, and virus work needs Containment Group 4 facilities.</dd></div>
+    </dl>
+    <p class="note"><b>Best sample.</b> Epithelium from an unruptured or freshly ruptured vesicle, or vesicular fluid. If none is available, use throat (oesophageal–pharyngeal) fluid from a probang cup in ruminants, a throat swab in pigs, or blood. Source: <a href="https://www.woah.org/fileadmin/Home/eng/Animal_Health_in_the_World/docs/pdf/2.01.05_FMD.pdf" target="_blank" rel="noopener">WOAH Terrestrial Manual, chapter 2.1.5</a>.</p>
+    <div class="panel" id="expl" style="background:var(--sunk)">
+      <div class="step"><span class="tag v">Table</span><h3>FMD diagnostic tests at a glance</h3></div>
+      <p class="muted">Each test answers a different question. Read across each row: what the test looks for, whether it detects virus or antibody, and whether it can tell serotypes or strains apart. SP = structural proteins (virus shell). NSP = non-structural proteins.</p>
+      <div class="tw"><table class="labt"><thead><tr><th>Test</th><th>What it tests</th><th>What it detects</th><th>Can it differentiate serotype or strain?</th></tr></thead><tbody>
+        <tr><td colspan="4" style="background:var(--accent-soft)"><b>Tests that detect the virus (sample: epithelium, vesicular fluid, throat fluid, sometimes serum)</b></td></tr>
+        <tr><td><b>Virus isolation</b><br><small class="muted">Cell culture or unweaned mice</small></td><td>Grows live virus from epithelium, vesicular fluid, throat (OP) fluid or serum. Takes up to 4 days.</td><td><span class="tag v">Live virus</span></td><td><span class="tag x">Not by itself</span> The isolate is then typed by ELISA, CFT or RT-PCR.</td></tr>
+        <tr><td><b>Antigen ELISA</b><br><small class="muted">Sandwich ELISA</small></td><td>Viral antigen in epithelial suspension, vesicular fluid or cell culture fluid. Not sensitive enough for throat fluid or serum.</td><td><span class="tag v">Antigen</span></td><td><span class="tag ok">Serotype</span> Capture antisera for each of the 7 serotypes. It does not separate strains.</td></tr>
+        <tr><td><b>Antigen lateral flow device</b><br><small class="muted">Pen-side strip</small></td><td>Viral antigen in epithelial suspension, at the farm. The 2012 Manual notes that no validation dossier had reached the OIE.</td><td><span class="tag v">Antigen</span></td><td><span class="tag x">No</span> Current strips detect virus only. Strips that give the serotype are under development.</td></tr>
+        <tr><td><b>Complement fixation test</b><br><small class="muted">Older test, mostly replaced by ELISA</small></td><td>Viral antigen in epithelial suspension. Less sensitive than ELISA.</td><td><span class="tag v">Antigen</span></td><td><span class="tag ok">Serotype</span> Typing with antisera, also used for subtyping.</td></tr>
+        <tr><td><b>RT-PCR</b><br><small class="muted">Conventional, gel-based</small></td><td>Viral RNA in epithelium, milk, serum and throat fluid.</td><td><span class="tag v">Viral RNA</span></td><td><span class="tag w">Partly</span> Serotype-specific primers exist, but no single primer set types every virus.</td></tr>
+        <tr><td><b>Real-time RT-PCR</b><br><small class="muted">TaqMan, 5′UTR or 3D target</small></td><td>Viral RNA in epithelium, throat fluid, serum and other samples. Fast, and as effective as virus isolation plus antigen ELISA for first detection.</td><td><span class="tag v">Viral RNA</span></td><td><span class="tag x">No</span> Detects all serotypes but is not designed to type them. Some serotype bias, and a few isolates are missed.</td></tr>
+        <tr><td><b>RT-LAMP</b><br><small class="muted">Isothermal, water bath, result by eye</small></td><td>Viral RNA in under an hour with simple equipment. Not yet extensively evaluated to replace current methods.</td><td><span class="tag v">Viral RNA</span></td><td><span class="tag x">No</span> A detection assay, not a typing test.</td></tr>
+        <tr><td><b>RT-PCR with sequencing</b><br><small class="muted">VP1 gene or whole genome</small></td><td>Reads the genome sequence of the virus.</td><td><span class="tag v">Viral RNA</span></td><td><span class="tag ok">Serotype and strain</span> Gives serotype, lineage and strain. Used to trace the origin and spread of outbreaks.</td></tr>
+        <tr><td colspan="4" style="background:var(--accent-soft)"><b>Tests that detect antibody (sample: serum)</b></td></tr>
+        <tr><td><b>Virus neutralisation test (VNT)</b><br><small class="muted">Needs cell culture and live virus</small></td><td>Neutralising antibody to the virus shell. Takes 2–3 days. Prescribed for trade.</td><td><span class="tag a">Antibody to SP</span></td><td><span class="tag ok">Serotype</span> Serotype-specific, and works best when the test virus matches the field strain. It cannot tell vaccinated from infected animals.</td></tr>
+        <tr><td><b>SPCE and LPBE ELISA</b><br><small class="muted">Solid-phase competition and liquid-phase blocking</small></td><td>Antibody to the virus shell. Faster than VNT and needs no live virus. Prescribed for trade.</td><td><span class="tag a">Antibody to SP</span></td><td><span class="tag ok">Serotype</span> Serotype-specific, and sensitive only if the antigen closely matches the field strain. It cannot tell vaccinated from infected animals.</td></tr>
+        <tr><td><b>NSP antibody tests</b><br><small class="muted">3ABC ELISA, strip, EITB</small></td><td>Antibody to non-structural proteins, which are made only when the virus replicates. Shows past or present infection, with or without vaccination (DIVA).</td><td><span class="tag a">Antibody to NSP</span></td><td><span class="tag x">No</span> NSPs are conserved, so the test is not serotype-specific. It detects infection with any of the 7 serotypes.</td></tr>
+      </tbody></table></div>
+      <p class="note"><b>Sources.</b> <a href="https://www.woah.org/fileadmin/Home/eng/Animal_Health_in_the_World/docs/pdf/2.01.05_FMD.pdf" target="_blank" rel="noopener">WOAH Terrestrial Manual, chapter 2.1.5, Foot and mouth disease (PDF)</a> and <a href="https://link.springer.com/article/10.1186/1297-9716-44-116" target="_blank" rel="noopener">Jamal and Belsham (2013), Foot-and-mouth disease: past, present and future. Vet Res 44:116</a>.</p>
+    </div>
+  </div>
+
+  <div class="panel chap">
+    <div class="step"><span class="tag ok">0.3 · DIVA</span><h3>SP and NSP antibodies: telling vaccinated from infected</h3></div>
+    <p>DIVA means differentiating infected from vaccinated animals. Both kinds of animal can have neutralising antibody in their serum, so a plain antibody test cannot tell them apart. For trade, we need to know which animals were infected and which were only vaccinated.</p>
+    <dl class="facts wide">
+      <div><dt>The idea</dt><dd>The virus particle has structural proteins (SP) that make up its shell. Its non-structural proteins (NSP, such as 2C and 3ABC) are made inside infected cells to copy the virus. Vaccines made from purified, inactivated virus particles give antibody almost only to SP, at least after a small number of vaccinations. Infection gives antibody to both.</dd></div>
+    </dl>
+    <div class="tw"><table class="labt"><thead><tr><th></th><th>SP antibody test</th><th>NSP antibody test</th></tr></thead><tbody>
+      <tr><td><b>Targets</b></td><td>Capsid proteins (VNT, SPCE, LPBE)</td><td>Non-structural proteins (3ABC ELISA, strip, EITB)</td></tr>
+      <tr><td><b>Vaccinated only</b></td><td><span class="tag ok">Positive</span></td><td><span class="tag x">Negative</span></td></tr>
+      <tr><td><b>Infected</b></td><td><span class="tag ok">Positive</span></td><td><span class="tag ok">Positive</span></td></tr>
+      <tr><td><b>Serotype-specific</b></td><td>Yes</td><td>No, NSPs are conserved</td></tr>
+      <tr><td><b>Main use</b></td><td>Vaccine response and trade certification</td><td>Detecting infection in vaccinated or unvaccinated herds</td></tr>
+    </tbody></table></div>
+    <div class="callout"><b>Limits of NSP tests</b>
+      <ul>
+        <li>NSP antibody lasts a long time, so a positive animal is not necessarily still infected. It may be a carrier.</li>
+        <li>Some persistently infected animals do not make NSP antibody. This can happen in previously vaccinated animals, where virus replicates only a little.</li>
+        <li>No antibody test can separate carriers from other animals that have responded to FMDV.</li>
+        <li>Crude vaccine, made from unpurified cell culture supernatant, contains viral NSP. Vaccinated animals can then make NSP antibody and test NSP-positive.</li>
+        <li>Repeated vaccination adds to this. Antibody to contaminating NSP can build up with each booster, so false NSP positives become more likely.</li>
+        <li>Use NSP results at herd level, with virus detection for confirmation.</li>
+      </ul>
+    </div>
+    <div class="step"><span class="tag v">Task 0.3</span><h3>Test a herd of 12 cattle</h3></div>
+    <p class="muted">A herd with a mixed history. Read the SP and NSP results for each cow, then decide: neither vaccinated nor infected, vaccinated only, or infected. Press Check my answers to see the answers and reasons. Teaching values: both tests are treated as reliable except where the limits above apply.</p>
+    <div class="controls"><button class="btn" type="button" id="checkH" disabled>Check my answers</button><button class="ghost" type="button" id="resetH">Reset</button></div>
+    <div class="herd" id="herd"></div>
+    <div id="herdOut" aria-live="polite"></div>
+  </div>
+
+  <div class="panel chap" id="case">
+    <div class="step"><span class="tag a">Case</span><h3>FMD returns to Indonesia, 2022</h3></div>
+    <p>Indonesia was free from FMD for decades. The last case was in December 1983, vaccination stopped after 1985, and WOAH recognised the country as free without vaccination in 1990. On 10 April 2022 the first outbreak was reported in Gresik, East Java. By the end of April, cattle farms in Sidoarjo and Lamongan were also affected. In May, outbreaks with FMD-like signs were reported across Java, Sumatra, Kalimantan and West Nusa Tenggara. Cases peaked in June 2022, fell through the year, and rose slightly again in early 2023. The virus was FMDV serotype O, lineage O/ME-SA/Ind-2001e.</p>
+    <dl class="facts wide">
+      <div><dt>Animals</dt><dd>In Java in 2022 and 2023, 41,129 farms had outbreaks and 308,148 animals were affected. 96.4% were cattle. The farm count fell from 37,266 in 2022 to 3,863 in 2023.</dd></div>
+      <div><dt>Signs</dt><dd>Fever, loss of appetite, and vesicles in the mouth or between the claws and on the coronary band. Cattle also drooled.</dd></div>
+      <div><dt>Peak</dt><dd>June 2022, with 19,049 outbreak farms and 157,931 cases in that month.</dd></div>
+      <div><dt>Response</dt><dd>Epidemic status and movement restrictions in early May 2022. First mass vaccination from late June to July 2022 and a second round in January and February 2023. Endemic status was declared in June 2023.</dd></div>
+      <div><dt>Why it spread</dt><dd>No immunity in the herds, no vaccine stockpile, little experience with FMD among farmers and animal health workers, and late reporting of suspect cases.</dd></div>
+    </dl>
+    <div class="figs">
+      <figure>
+        <a href="photos/fmd-java-epidemic-curve-2022-2023.webp" target="_blank" rel="noopener"><img src="photos/fmd-java-epidemic-curve-2022-2023.webp" width="2008" height="1097" loading="lazy" alt="Two bar charts of weekly FMD in Java from April 2022 to December 2023, stacked by province. Cases peak at about 45,000 in June 2022 and outbreak farms at about 5,300. A small second rise appears in January and February 2023."></a>
+        <figcaption><b>Epidemic curve.</b> Weekly cases (top) and outbreak farms (bottom) in Java, by province. East Java contributed most. Click to enlarge.</figcaption>
+      </figure>
+      <figure>
+        <a href="photos/fmd-java-cumulative-incidence-2022-2023.webp" target="_blank" rel="noopener"><img src="photos/fmd-java-cumulative-incidence-2022-2023.webp" width="2008" height="1454" loading="lazy" alt="Two maps of Java showing cumulative incidence of FMD per 1000 animals by subdistrict. In 2022 (A) most subdistricts are shaded, with the highest values in East Java and parts of West and Central Java. In 2023 (B) most subdistricts have zero or low incidence."></a>
+        <figcaption><b>Map.</b> Cumulative incidence per 1000 animals by subdistrict in (A) 2022 and (B) 2023. Click to enlarge.</figcaption>
+      </figure>
+    </div>
+    <p class="figsrc">Figures from Kedang et al. (2025), Figs. 1 and 3, BMC Veterinary Research 21:180, reproduced unchanged under CC BY-NC-ND 4.0.</p>
+    <div class="callout" style="border-left-color:var(--accent);background:var(--accent-soft)"><b>Your role.</b> You are a veterinary officer in East Java in late April 2022. Farmers are reporting cattle with fever, drooling, lameness and blisters. Few animal health workers have seen FMD before. The two exercises below ask you to think like the officer on duty.</div>
+  </div>
+
+  <div class="panel chap" id="ex1">
+    <div class="step"><span class="tag v">Exercise 0.1</span><h3>The epidemiological triad of the Indonesian outbreak</h3></div>
+    <ol class="q">
+      <li>Draw the epidemiological triad for the 2022 FMD outbreak in Indonesia, with the host, agent and environment corners.</li>
+      <li>Fit the situation in the case to each corner. Which facts about the animals, the virus and the setting explain why FMD appeared and spread so fast?</li>
+    </ol>
+  </div>
+
+  <div class="panel chap" id="ex2">
+    <div class="step"><span class="tag v">Exercise 0.2</span><h3>Sample taking and diagnostic tests for the suspected case</h3></div>
+    <p class="muted">A farm in your district reports 40 cattle and a few goats with fever, drooling, lameness and vesicles.</p>
+    <div class="figs">
+      <figure>
+        <a href="photos/fmd-probang-oropharyngeal-sampling.webp" target="_blank" rel="noopener"><img src="photos/fmd-probang-oropharyngeal-sampling.webp" width="640" height="480" loading="lazy" alt="A handler in a gown and gloves holds a probang cup with oesophageal-pharyngeal fluid next to a black cow restrained with a nose ring at a wooden crush."></a>
+        <figcaption><b>Probang sample.</b> Collecting oesophageal&ndash;pharyngeal (OP) fluid from a cow with a probang cup. Click to enlarge.</figcaption>
+      </figure>
+    </div>
+    <ol class="q">
+      <li>What is your sample-taking plan? Say which animals you sample, which samples you collect, and how you handle and send them.</li>
+      <li>Which diagnostic tests would you choose to test the suspected case so that the outbreak response is on time? Give your reasons for each test you choose and for each test you leave out.</li>
+    </ol>
+  </div>
+
+  <div class="panel chap" id="present">
+    <div class="step"><span class="tag a">Presentation</span><h3>Prepare a presentation to answer the questions</h3></div>
+    <p>Prepare a presentation that answers Exercises 0.1 and 0.2. Suggested slides:</p>
+    <ol class="q">
+      <li>Your triad, with the outbreak facts placed in each corner.</li>
+      <li>Your sample-taking plan.</li>
+      <li>Your choice of diagnostic tests, with reasons.</li>
+    </ol>
+    <p class="note"><b>Sources.</b> Kedang VMK, Permatasari I, Chanchaidechachai T, Inchaisri C (2025), Spatial-temporal distribution and risk factors of foot and mouth disease outbreaks in Java Island, Indonesia from 2022 to 2023, BMC Veterinary Research 21:180: <a href="https://pubmed.ncbi.nlm.nih.gov/40102856/" target="_blank" rel="noopener">PubMed</a> and <a href="https://link.springer.com/article/10.1186/s12917-025-04621-2" target="_blank" rel="noopener">Springer</a>. Susila EB et al. (2023), <a href="https://www.tandfonline.com/doi/full/10.1080/09712119.2023.2229414#abstract" target="_blank" rel="noopener">Detection and identification of foot-and-mouth disease O/ME-SA/Ind-2001 virus lineage, Indonesia, 2022</a>, Journal of Applied Animal Research 51:487–494. Sample handling and test notes also draw on the WOAH Terrestrial Manual chapter 2.1.5 and Jamal and Belsham (2013), cited above.</p>
+  </div>
+</section>
+
+<div class="pager"><a class="nx" href="01-test-performance.html"><small>Next →</small><b>01 Diagnostic test performance</b></a></div>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/s00.js"></script>
+<script>initProgress();</script>
+</body>
+</html>

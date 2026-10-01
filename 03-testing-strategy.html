@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>03 Choose a testing strategy · FMD Diagnostic Bench</title>
+<meta name="description" content="Choose a testing strategy. Module 1, Diagnostic tools in veterinary epidemiology, with foot-and-mouth disease as the case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap" id="nav"><a href="index.html">Contents</a><a href="00-know-fmd.html" data-s="basics">00 Know FMD</a><a href="01-test-performance.html" data-s="lo1">01 Se·Sp·PV</a><a href="02-reference-standards.html" data-s="lo2">02 Reference</a><a href="03-testing-strategy.html" data-s="lo3" aria-current="page">03 Strategy</a><a href="04-surveillance.html" data-s="lo4">04 Surveillance</a><a href="05-combining-tests.html" data-s="lo5">05 Combine</a><span class="prog" id="prog">0 / 7</span></div></nav>
+<div class="wrap">
+<section class="lo" id="lo3">
+  <div class="lohead"><span class="lonum">03</span><h1>Choose a testing strategy</h1><button class="donebtn" data-sec="lo3" aria-pressed="false" type="button">Mark done</button></div>
+  <div class="panel" id="expl">
+    <div class="step"><span class="tag v">Task 3.1</span><h3>Diagnostic target explorer</h3></div>
+    <p class="muted">A test that answers one question may not answer another. Pick a question, find the tests that fit, and read the limit that comes with each. Based on the WOAH (OIE) Terrestrial Manual chapter on FMD and Jamal and Belsham (2013).</p>
+    <div class="chips" id="qChips" role="group" aria-label="Diagnostic question"></div>
+    <p class="note" id="qNote" aria-live="polite"></p>
+    <div class="tw"><table class="labt"><thead><tr><th>Test</th><th>What it detects</th><th>Fit</th><th>Why</th></tr></thead><tbody id="qOut"></tbody></table></div>
+    <p class="note"><b>Further reading.</b> <a href="https://link.springer.com/article/10.1186/1297-9716-44-116" target="_blank" rel="noopener">Jamal and Belsham (2013), Foot-and-mouth disease: past, present and future. Vet Res 44:116</a>. <a href="https://www.woah.org/fileadmin/Home/eng/Animal_Health_in_the_World/docs/pdf/2.01.05_FMD.pdf" target="_blank" rel="noopener">WOAH Terrestrial Manual, chapter 2.1.5, Foot and mouth disease (PDF)</a>.</p>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Key idea</span><h3>Screening or confirmation?</h3></div>
+    <p><b>Screening: prioritise sensitivity. Confirmation: prioritise specificity.</b> Match the test to the purpose and to the consequences of error.</p>
+    <figure style="margin:0 0 14px;max-width:460px">
+      <a href="photos/blood-sample-tubes.jpg" target="_blank" rel="noopener"><img src="photos/blood-sample-tubes.jpg" width="676" height="454" loading="lazy" alt="A gloved hand lifts a blood sample tube with a barcode label from a rack of tubes with coloured caps. The tubes hold serum or blood samples ready for testing." style="width:100%;height:auto;border-radius:8px;display:block"></a>
+    </figure>
+    <div class="tw"><table class="labt"><thead><tr><th></th><th>Screening</th><th>Confirmation</th></tr></thead><tbody>
+      <tr><td><b>Question</b></td><td>Which animals or herds might be infected?</td><td>Is this positive result really infection?</td></tr>
+      <tr><td><b>Priority</b></td><td>High sensitivity</td><td>High specificity</td></tr>
+      <tr><td><b>Error to avoid</b></td><td>False negative: an infected animal is missed and the virus keeps spreading.</td><td>False positive: a healthy herd is culled, movement is restricted or trade is lost.</td></tr>
+      <tr><td><b>How to read the result</b></td><td>A negative result is reliable. It rules infection out.</td><td>A positive result is reliable. It rules infection in.</td></tr>
+      <tr><td><b>FMD example</b></td><td>Screening many herds in a surveillance programme or testing imported animals.</td><td>Testing a positive animal again before declaring an outbreak or a free-zone breach.</td></tr>
+      <tr><td><b>What you accept</b></td><td>Some false positives, which the next test will sort out.</td><td>Some missed cases, which screening is meant to catch.</td></tr>
+    </tbody></table></div>
+    <p class="note"><b>Use two steps.</b> Screen with a sensitive test, then retest every positive with a specific test. When prevalence is low, even a good test gives many false positives (see 1.6), so a positive screening result alone is not enough to act on.</p>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Task 3.2</span><h3>Two hypothetical tests: which for which job?</h3></div>
+    <div class="grid2">
+      <div class="kpi"><span>Test A</span><b>Se 98% · Sp 90%</b></div>
+      <div class="kpi"><span>Test B</span><b>Se 85% · Sp 99.5%</b></div>
+    </div>
+    <div class="scen" id="q41"></div>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag a">Task 3.3</span><h3>Same test, different cut-off for a different purpose</h3></div>
+    <p class="muted">The Terrestrial Manual lists four purposes for FMD serology: certify individual animals for trade, confirm suspected cases, substantiate absence of infection, and demonstrate vaccine efficacy. Cut-offs may differ by purpose.</p>
+    <div class="tw"><table class="labt"><thead><tr><th>Test</th><th>Individual animal, trade certificate</th><th>Herd-based serosurvey</th></tr></thead><tbody>
+      <tr><td><b>LPBE</b> (liquid-phase blocking ELISA)</td><td>Titre below 1/40 negative. Above 1/40 but below 1/90 doubtful: request a second sample, positive if it reaches 1/40.</td><td>Cut-off 1/90 may be appropriate.</td></tr>
+      <tr><td><b>VNT</b> (virus neutralisation)</td><td>Below 1/16 negative. 1/16 to 1/32 doubtful: request a second sample, positive if it reaches 1/16.</td><td>Cut-off 1/45 may be appropriate.</td></tr>
+      <tr><td><b>SPCE</b> (solid-phase competition ELISA)</td><td>For maximum sensitivity an inconclusive range of 40–60% inhibition may be set.</td><td>Above 60% inhibition positive to show freedom in a naive population (serotype O, Pirbright).</td></tr>
+      <tr><td><b>rRT-PCR</b></td><td colspan="2">Example from the OIE Reference Laboratory at Pirbright: Ct below 40 positive, 40–50 borderline and retest, above 50 negative. Laboratories define their own cut-offs with reference material.</td></tr>
+    </tbody></table></div>
+    <details class="task"><summary>Why would a serum be "doubtful" for an export certificate but simply counted in a survey?</summary><div class="body"><p>A certificate speaks for one animal, so a wrong call has a direct trade and disease-spread cost. The programme can afford a second sample. A survey draws conclusions about a herd from many animals, so a single borderline titre matters less. The purpose sets the acceptable error, and the cut-off follows.</p></div></details>
+  </div>
+  <div class="scen" id="q42"></div>
+</section>
+
+<div class="pager"><a href="02-reference-standards.html"><small>← Previous</small><b>02 Evaluate reference standards</b></a><a class="nx" href="04-surveillance.html"><small>Next →</small><b>04 Plan surveillance and timing</b></a></div>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/s03.js"></script>
+<script>initProgress();</script>
+</body>
+</html>

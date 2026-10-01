@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>02 Evaluate reference standards · FMD Diagnostic Bench</title>
+<meta name="description" content="Evaluate reference standards. Module 1, Diagnostic tools in veterinary epidemiology, with foot-and-mouth disease as the case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap" id="nav"><a href="index.html">Contents</a><a href="00-know-fmd.html" data-s="basics">00 Know FMD</a><a href="01-test-performance.html" data-s="lo1">01 Se·Sp·PV</a><a href="02-reference-standards.html" data-s="lo2" aria-current="page">02 Reference</a><a href="03-testing-strategy.html" data-s="lo3">03 Strategy</a><a href="04-surveillance.html" data-s="lo4">04 Surveillance</a><a href="05-combining-tests.html" data-s="lo5">05 Combine</a><span class="prog" id="prog">0 / 7</span></div></nav>
+<div class="wrap">
+<section class="lo" id="lo2">
+  <div class="lohead"><span class="lonum">02</span><h1>Evaluate reference standards</h1><button class="donebtn" data-sec="lo2" aria-pressed="false" type="button">Mark done</button></div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Intro</span><h3>What is a gold standard (reference method)?</h3></div>
+    <p>A <b>gold standard</b>, or <b>reference method</b>, is the best available test, or combination of tests, for deciding whether an animal is infected. We treat its result as the "true" status.</p>
+    <p><b>What we use it for:</b> to evaluate a new test, called the <b>index test</b>. We compare the index test with the reference result in the same animals. This gives the 2×2 table and the sensitivity and specificity from section 01.</p>
+    <div class="note"><b>No reference is perfect.</b> A test is not a gold standard just because it is expensive, molecular, or reported to have high sensitivity and specificity. If the reference misses infected animals, the index test will look worse (or better) than it really is. We must also ask whether the reference itself is trustworthy.</div>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag ok">Agreement</span><h3>Test agreement and the kappa coefficient</h3></div>
+    <p>Sometimes we compare two tests but do not know which one is right. Then we ask a simpler question: how often do the two tests give the same result?</p>
+    <p><b>Test agreement</b> is the share of animals with the same result on both tests (both positive or both negative). It is easy to calculate, but part of it happens by chance. Two tests that both call most animals negative will agree often, even if neither is any good.</p>
+    <p>The <b>kappa coefficient (κ)</b> corrects for this. It measures agreement <b>beyond chance</b>. Kappa is 1 for perfect agreement, 0 when agreement is no better than chance, and negative when agreement is worse than chance.</p>
+
+    <h4 style="margin-top:6px">How to calculate kappa</h4>
+    <p>Put the results of the two tests in a 2×2 table. Let a, b, c and d be the four cells, and N the total.</p>
+    <div class="tw"><table class="tr"><thead><tr><th></th><th>Test B positive</th><th>Test B negative</th><th>Total</th></tr></thead><tbody>
+      <tr><td><b>Test A positive</b></td><td class="n">a</td><td class="n">b</td><td class="n">a + b</td></tr>
+      <tr><td><b>Test A negative</b></td><td class="n">c</td><td class="n">d</td><td class="n">c + d</td></tr>
+      <tr><td><b>Total</b></td><td class="n">a + c</td><td class="n">b + d</td><td class="n">N</td></tr>
+    </tbody></table></div>
+    <ul class="kl">
+      <li><b>Step 1. Observed agreement</b> (Po) = (a + d) ÷ N</li>
+      <li><b>Step 2. Expected agreement by chance</b> (Pe) = [(a + b)(a + c) + (c + d)(b + d)] ÷ N²</li>
+      <li><b>Step 3. Kappa</b> = (Po − Pe) ÷ (1 − Pe)</li>
+    </ul>
+
+    <h4 style="margin-top:6px">Example (hypothetical)</h4>
+    <p>Two tests are used on 100 cattle.</p>
+    <div class="tw"><table class="tr"><thead><tr><th></th><th>Test B positive</th><th>Test B negative</th><th>Total</th></tr></thead><tbody>
+      <tr><td><b>Test A positive</b></td><td class="n">40</td><td class="n">10</td><td class="n">50</td></tr>
+      <tr><td><b>Test A negative</b></td><td class="n">5</td><td class="n">45</td><td class="n">50</td></tr>
+      <tr><td><b>Total</b></td><td class="n">45</td><td class="n">55</td><td class="n">100</td></tr>
+    </tbody></table></div>
+    <p class="mono">Po = (40 + 45) ÷ 100 = 0.85 (85% agreement)</p>
+    <p class="mono">Pe = [(50 × 45) + (50 × 55)] ÷ 100² = (2,250 + 2,750) ÷ 10,000 = 0.50</p>
+    <p class="mono">κ = (0.85 − 0.50) ÷ (1 − 0.50) = 0.35 ÷ 0.50 = 0.70</p>
+    <p class="muted">The tests agree on 85% of animals. Half of that agreement is expected by chance, so kappa is 0.70.</p>
+
+    <h4 style="margin-top:6px">How to interpret kappa</h4>
+    <div class="tw"><table><thead><tr><th style="text-align:left">Kappa</th><th style="text-align:left">Agreement beyond chance</th></tr></thead><tbody>
+      <tr><td class="num" style="text-align:left">below 0</td><td style="text-align:left">Poor (worse than chance)</td></tr>
+      <tr><td class="num" style="text-align:left">0.00 – 0.20</td><td style="text-align:left">Slight</td></tr>
+      <tr><td class="num" style="text-align:left">0.21 – 0.40</td><td style="text-align:left">Fair</td></tr>
+      <tr><td class="num" style="text-align:left">0.41 – 0.60</td><td style="text-align:left">Moderate</td></tr>
+      <tr><td class="num" style="text-align:left">0.61 – 0.80</td><td style="text-align:left">Substantial</td></tr>
+      <tr><td class="num" style="text-align:left">0.81 – 1.00</td><td style="text-align:left">Almost perfect</td></tr>
+    </tbody></table></div>
+    <p>These ranges follow Landis and Koch (1977). In the example, κ = 0.70 is <b>substantial</b> agreement.</p>
+    <div class="note"><b>Read kappa with care.</b> Kappa tells you how well two tests agree. It does not tell you which test is correct, and it is not the share of infected animals that a test finds. It also changes with prevalence, and it is imprecise when few animals are tested.</div>
+  </div>
+  <div class="panel ex">
+    <div class="step"><span class="tag a">Case</span><h3>Can a field strip replace the laboratory ELISA?</h3></div>
+    <p><b>Source.</b> <a href="https://dx.doi.org/10.54203/scil.2024.wvj5" target="_blank" rel="noopener">Jauhari et al. (2024)</a>, <i>World Vet J</i> 14(1):33–37. Open access.</p>
+    <p><b>Background.</b> Foot-and-mouth disease (serotype O, lineage O/ME-SA/Ind-2001e) returned to Indonesia in May 2022. Control programmes need a serological test that can tell infected animals from vaccinated ones. Antibodies to non-structural proteins (NSP) can do this. The indirect NSP ELISA works, but it needs time, trained staff and laboratory equipment. A lateral flow assay (LFA) is a simple, portable strip that gives a result in 10–15 minutes.</p>
+    <p><b>Objective.</b> To find out how well the LFA can replace the indirect ELISA, by comparing the two tests on stored sera. The authors report sensitivity, specificity and kappa, with the indirect ELISA as the reference.</p>
+
+    <div style="display:flex;gap:12px;flex-wrap:wrap;align-items:flex-start;margin-top:10px">
+      <figure style="margin:0;flex:1 1 280px;min-width:0">
+        <a href="photos/lateral-flow-cassette-parts.png" target="_blank" rel="noopener"><img src="photos/lateral-flow-cassette-parts.png" width="1024" height="577" loading="lazy" alt="Diagram of a lateral flow cassette test. Left: swab, lancet and extraction buffer vial. Right: cassette opened to show the test strip with sample pad, conjugate pad, nitrocellulose membrane with test and control lines, absorbent pad and backing card." style="width:100%;height:auto;border-radius:8px;display:block"></a>
+        <figcaption class="muted" style="font-size:.85em;margin-top:6px">Index test: lateral flow assay (LFA) cassette. Click to enlarge.</figcaption>
+      </figure>
+      <figure style="margin:0;flex:1 1 280px;min-width:0">
+        <a href="photos/elisa-plate-pipetting.webp" target="_blank" rel="noopener"><img src="photos/elisa-plate-pipetting.webp" width="1076" height="600" loading="lazy" alt="A pipette adds blue liquid to wells of a 96-well ELISA plate, next to a blue tube rack." style="width:100%;height:auto;border-radius:8px;display:block"></a>
+        <figcaption class="muted" style="font-size:.85em;margin-top:6px">Reference method: indirect ELISA on a 96-well plate. Click to enlarge.</figcaption>
+      </figure>
+    </div>
+  </div>
+  <details class="task ex" open><summary>Methods and results data (Table 2 of the paper)</summary><div class="body">
+    <p><b>Index test.</b> PMKit Ab (Tekad Mandiri Citra), an anti-NSP lateral flow strip in a competitive format. Serum is applied and the strip is read after 10–15 minutes. A coloured T line means negative. No T line means positive.</p>
+    <p><b>Reference method.</b> Indirect ELISA, IDEXX CHEKIT FMD-3ABC bo-ov. Manufacturer reading: below 20% negative, 20–30% ambiguous, above 30% positive. The LFA has no ambiguous zone.</p>
+    <p><b>Samples.</b> Preserved sera from beef and dairy cattle in provinces with no earlier FMD vaccination, already tested by ELISA for monitoring. Breed codes: FH Friesian Holstein, SC Simmental crossbreed, OC Ongole.</p>
+    <div class="controls">
+      <label class="f" for="dsProv">Province<select id="dsProv"><option value="all">All</option><option>East Java</option><option>Banten</option><option>Lampung</option></select></label>
+      <label class="f" for="dsLfa">LFA<select id="dsLfa"><option value="any">Any</option><option value="1">Positive</option><option value="0">Negative</option></select></label>
+      <label class="f" for="dsE">ELISA<select id="dsE"><option value="any">Any</option><option value="P">Positive</option><option value="S">Ambiguous</option><option value="N">Negative</option></select></label>
+      <span class="muted" id="dsCount"></span>
+      <button class="ghost" id="csvBtn" type="button">Copy dataset as CSV</button>
+    </div>
+    <div class="dtable"><table><thead><tr><th>Serum</th><th>Breed</th><th>Province</th><th>LFA</th><th>ELISA %</th><th>ELISA reading</th></tr></thead><tbody id="dsBody"></tbody></table></div>
+    <textarea id="csvBox" readonly hidden aria-label="Dataset as CSV"></textarea>
+    <small class="muted">Data transcribed from Table 2 of <a href="https://dx.doi.org/10.54203/scil.2024.wvj5" target="_blank" rel="noopener">Jauhari et al. (2024)</a>. The counts reproduce the article's totals: 20 LFA-positive, 21 ELISA-positive, 3 ambiguous, 8 negative.</small>
+  </div></details>
+  <div class="panel chap ex" id="ex21">
+    <div class="step"><span class="tag v">Exercise 2.1</span><h3>Sensitivity and specificity of the lateral flow assay</h3></div>
+    <ol class="q">
+      <li>Calculate the sensitivity and specificity of the lateral flow assay (LFA) compared with the indirect ELISA, using the data in Table 2.</li>
+    </ol>
+    <p class="muted">Follow the authors: ELISA ambiguous results are grouped with negative. Use the filters in the Table 2 box to count the sera.</p>
+  </div>
+
+  <div class="panel chap ex" id="ex22">
+    <div class="step"><span class="tag v">Exercise 2.2</span><h3>Test agreement and kappa</h3></div>
+    <ol class="q">
+      <li>Calculate the test agreement between the LFA and the indirect ELISA, and calculate the kappa coefficient. Interpret the kappa value.</li>
+    </ol>
+    <p class="muted">Use the 2×2 table from Exercise 2.1 and the kappa steps above.</p>
+  </div>
+
+  <div class="panel chap ex" id="present">
+    <div class="step"><span class="tag a">Presentation</span><h3>Prepare a presentation to answer the questions</h3></div>
+    <p>Prepare a presentation that answers Exercises 2.1 and 2.2. Suggested slides:</p>
+    <ol class="q">
+      <li>The 2×2 table from Table 2, with your sensitivity and specificity and how you calculated them.</li>
+      <li>The test agreement and kappa, with your interpretation.</li>
+      <li>One limitation of the study that affects how far you can trust these numbers.</li>
+    </ol>
+  </div>
+  <div class="scen" id="q1"></div>
+</section>
+
+<div class="pager"><a href="01-test-performance.html"><small>← Previous</small><b>01 Diagnostic test performance</b></a><a class="nx" href="03-testing-strategy.html"><small>Next →</small><b>03 Choose a testing strategy</b></a></div>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/data.js"></script>
+<script src="assets/s02.js"></script>
+<script>initProgress();</script>
+</body>
+</html>

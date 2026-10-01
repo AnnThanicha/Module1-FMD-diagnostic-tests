@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>04 Plan surveillance and timing · FMD Diagnostic Bench</title>
+<meta name="description" content="Plan surveillance and timing. Module 1, Diagnostic tools in veterinary epidemiology, with foot-and-mouth disease as the case.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,650&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<nav class="top" aria-label="Sections"><div class="wrap" id="nav"><a href="index.html">Contents</a><a href="00-know-fmd.html" data-s="basics">00 Know FMD</a><a href="01-test-performance.html" data-s="lo1">01 Se·Sp·PV</a><a href="02-reference-standards.html" data-s="lo2">02 Reference</a><a href="03-testing-strategy.html" data-s="lo3">03 Strategy</a><a href="04-surveillance.html" data-s="lo4" aria-current="page">04 Surveillance</a><a href="05-combining-tests.html" data-s="lo5">05 Combine</a><span class="prog" id="prog">0 / 7</span></div></nav>
+<div class="wrap">
+<section class="lo" id="lo4">
+  <div class="lohead"><span class="lonum">04</span><h1>Plan surveillance and timing</h1><button class="donebtn" data-sec="lo4" aria-pressed="false" type="button">Mark done</button>
+    <p>Explain monitoring, surveillance and freedom from infection. Consider sampling, test sensitivity and testing intervals.</p></div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Intro</span><h3>Monitoring, surveillance and freedom from infection</h3></div>
+    <div class="tw"><table class="labt"><thead><tr><th>Term</th><th>What it is</th><th>FMD example</th></tr></thead><tbody>
+      <tr><td><b>Monitoring</b></td><td>Routine, ongoing collection of data on health or disease. It shows trends and changes over time. It does not always lead to an action.</td><td>Recording FMD reports and vaccination coverage in a district each month.</td></tr>
+      <tr><td><b>Surveillance</b></td><td>Systematic, ongoing collection, analysis and sharing of information on disease, so that action can be taken. It has a clear purpose, such as early detection or proving freedom.</td><td>Testing a sample of herds every year and reporting the results to the veterinary authority.</td></tr>
+      <tr><td><b>Freedom from infection</b></td><td>The pathogen is absent from a population, country or zone. Surveillance cannot prove zero infection. It shows that infection is unlikely to be present above a set level (the design prevalence), with a stated confidence.</td><td>A zone claims to be free of FMD after repeated negative surveys with a sensitive test.</td></tr>
+    </tbody></table></div>
+    <p class="note"><b>Why this matters for testing.</b> Surveillance results depend on the test, how many animals are sampled and when they are tested. The tasks below show how each one changes what a negative result means.</p>
+  </div>
+  <div class="scen" id="q51"></div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Lecture</span><h3>How many animals to sample to show a herd or zone is free?</h3></div>
+    <p>We cannot test every animal, so we sample. We ask: <b>if infection were present at a low level, how likely is it that our sample finds at least one positive?</b> If the whole sample is negative, we can say infection is unlikely above that level.</p>
+    <p><b>Three inputs:</b></p>
+    <ul>
+      <li><b>Design prevalence (DP):</b> the lowest infection level we want to detect, for example 5% of animals.</li>
+      <li><b>Test sensitivity (Se):</b> the chance that an infected animal tests positive.</li>
+      <li><b>Confidence:</b> how sure we want to be of finding infection if it is there, usually 95%.</li>
+    </ul>
+    <div class="callout"><b>Chance of at least one positive = 1 − (1 − DP × Se)<sup>n</sup></b><br>
+      To reach a confidence level, solve for n: <b>n = ln(1 − confidence) ÷ ln(1 − DP × Se)</b>. Round up to the next whole animal.</div>
+    <p><b>Worked example.</b> DP = 5%, Se = 90%, confidence = 95%.</p>
+    <ol>
+      <li>Chance that one sampled animal is infected and tests positive: 0.05 × 0.90 = <b>0.045</b>.</li>
+      <li>n = ln(0.05) ÷ ln(1 − 0.045) = −2.996 ÷ −0.0460 = 65.1, so <b>n = 66 animals</b>.</li>
+      <li>Check: 1 − (1 − 0.045)<sup>66</sup> = 95.2%. With 65 animals it is 94.99%, just under 95%. Many lectures round this to 65.</li>
+    </ol>
+    <p><b>Reading the result.</b> If all 66 animals test negative, we are 95% sure the survey would have found infection if 5% or more of the animals were infected. This is not proof of zero infection.</p>
+    <p class="note"><b>What changes n.</b> A lower design prevalence needs many more animals: at DP = 1% and Se = 90%, n = 332. A less sensitive test also needs more animals. The formula assumes random, independent sampling from a large population. <a href="#t42">Try it in Task 4.2 below.</a></p>
+  </div>
+  <div class="panel" id="t42">
+    <div class="step"><span class="tag v">Task 4.2</span><h3>How many animals must be sampled to detect infection?</h3></div>
+    <p class="muted">Probability of at least one positive among <i>n</i> animals = 1 − (1 − design prevalence × sensitivity)<sup><i>n</i></sup>. This assumes independent, representative sampling from a large population.</p>
+    <div class="sliders">
+      <label class="sl" for="fdP"><span class="sh"><span>Design prevalence</span><output id="fdPO"></output></span><input type="range" id="fdP" min="0.5" max="30" step="0.5" value="5"></label>
+      <label class="sl" for="fdS"><span class="sh"><span>Test sensitivity</span><output id="fdSO"></output></span><input type="range" id="fdS" min="50" max="100" step="0.1" value="90"></label>
+      <label class="sl" for="fdN"><span class="sh"><span>Animals sampled (n)</span><output id="fdNO"></output></span><input type="range" id="fdN" min="1" max="300" step="1" value="30"></label>
+    </div>
+    <div class="chartbox" id="fdChart"></div>
+    <div class="kpis" id="fdK"></div>
+    <p class="note" id="fdTxt"></p>
+    <div class="callout"><b>A negative sample is not proof of zero infection.</b> The calculation says how likely a survey is to find infection if it is present at the design prevalence. Sampling that is not random, clustered animals, timing and false-positive follow-up all change the real strength of the evidence.</div>
+  </div>
+  <div class="panel">
+    <div class="step"><span class="tag v">Intro</span><h3>Why does the timing of surveillance matter?</h3></div>
+    <p>A negative result only tells us about the moment of sampling. Infection can be missed in two ways:</p>
+    <ul>
+      <li><b>Sampled too early.</b> After exposure, an animal needs time before antibodies or virus can be detected. A test taken before then is negative even if the animal is infected.</li>
+      <li><b>Sampled too rarely.</b> Infection can start just after a visit and spread for weeks before the next one. FMD spreads fast, so long gaps mean late detection and a larger outbreak.</li>
+    </ul>
+    <p class="note"><b>Use the right test at the right time.</b> Choose a test that can detect infection at the stage you sample, and set the sampling interval to match how fast the disease spreads. The next task shows how to check when a test can first detect infection.</p>
+  </div>
+  <div class="panel">
+      <div class="step"><span class="tag a">Task 4.3</span><h3>When was the animal exposed, and when could this test detect it?</h3></div>
+      <div class="sliders">
+        <label class="sl" for="tmD"><span class="sh"><span>Day of sampling after exposure</span><output id="tmDO"></output></span><input type="range" id="tmD" min="0" max="45" step="1" value="3"></label>
+        <label class="sl" for="tmW"><span class="sh"><span>Antibody assumed detectable from day</span><output id="tmWO"></output></span><input type="range" id="tmW" min="3" max="30" step="1" value="14"></label>
+      </div>
+      <div class="chartbox" id="tmSvg"></div>
+      <p class="note" id="tmTxt"></p>
+      <small class="muted">The detectable-from day is an illustrative assumption for teaching. Use pathogen-specific and assay-specific data for real decisions.</small>
+      <details class="task"><summary>Why does WOAH ask for isolation before shipment?</summary><div class="body"><ul>
+        <li>A 30-day isolation window guarantees that any animal exposed to the virus right before entering isolation has ample time to pass the incubation phase and develop visible clinical signs of the disease.</li>
+        <li>Animals must undergo diagnostic virological and serological testing to prove they are negative for FMDV.</li>
+        <li>WOAH requires that test samples are collected at least 28 days after the start of the isolation period. This deliberate delay gives an animal that was infected just as isolation began enough time to develop a detectable viral load or immune response (antibodies). This removes the risk of a false-negative result.</li>
+      </ul></div></details>
+    </div>
+  <div class="panel chap ex" id="ex41">
+    <div class="step"><span class="tag a">Exercise 4.1</span><h3>Case: Has FMD spread to East Java?</h3></div>
+    <p><b>Scenario.</b> You are a veterinary officer in East Java, Indonesia. An FMD outbreak is currently ongoing in West Java. You want to determine whether FMD has spread to East Java. You conduct testing in cattle in East Java to provide evidence that there is no FMD infection in the region.</p>
+    <figure style="margin:0 0 14px;max-width:560px">
+      <a href="photos/fmd-cattle-vaccination-sampling.jpg" target="_blank" rel="noopener"><img src="photos/fmd-cattle-vaccination-sampling.jpg" width="1024" height="678" loading="lazy" alt="Veterinary staff in white coats, aprons, masks and gloves work on a brown and white cow lying on its side in a cattle shed. One person holds a syringe at the animal's neck." style="width:100%;height:auto;border-radius:8px;display:block"></a>
+    </figure>
+    <p><b>Survey design.</b> Confidence is 95%. Design prevalence is 1%. Assume the animals are sampled at random from a large population.</p>
+    <ol class="q">
+      <li>Which test would you choose for this survey? Explain why. Think about what the test detects, and whether some cattle may have been vaccinated.</li>
+      <li>Find the sensitivity of your chosen test in the published literature. Give the value and the source.</li>
+      <li>Calculate the number of animals to sample, using the formula in the lecture above. Check your answer with the calculator in Task 4.2.</li>
+      <li>All sampled animals test negative. What can you say about East Java? What can you not say?</li>
+    </ol>
+    <p class="muted"><b>Presentation.</b> Present your answers to Exercise 4.1 in a short presentation. Show the test you chose and why, the sensitivity value and its source, your sample size calculation, and what a negative result means for East Java.</p>
+  </div>
+</section>
+
+<div class="pager"><a href="03-testing-strategy.html"><small>← Previous</small><b>03 Choose a testing strategy</b></a><a class="nx" href="05-combining-tests.html"><small>Next →</small><b>05 Combine diagnostic tests</b></a></div>
+</div>
+<script src="assets/common.js"></script>
+<script src="assets/s04.js"></script>
+<script>initProgress();</script>
+</body>
+</html>
